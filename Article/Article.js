@@ -102,7 +102,7 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -111,4 +111,55 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
+  <div class="article">
+    <h2>{title of the article}</h2>
+    <p class="date">{date of the article}</p>
+
+    {three separate paragraph elements}
+
+    <span class='expandButton'></span>
+  </div>
+
 */
+const articlesEl = document.querySelector(".articles")
+
+data.map((elem) => {
+  return articlesEl.appendChild(createArticle(elem.title, elem.date, elem.firstParagraph, elem.secondParagraph, elem.thirdParagraph));
+})
+
+function createArticle(title, date, firstPara, secondPara , thirdPara) {
+const article = document.createElement("div");
+const articleTitle = document.createElement("h2");
+const articleDate = document.createElement("p");
+const paraFirst = document.createElement("p");
+const paraSec = document.createElement("p");
+const paraThird = document.createElement("p");
+const expandBtn = document.createElement("span");
+
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(paraFirst);
+  article.appendChild(paraSec);
+  article.appendChild(paraThird);
+  article.appendChild(expandBtn);
+
+  article.classList.add('article');
+  articleDate.classList.add("date");
+  expandBtn.classList.add("expandButton")
+
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  paraFirst.textContent = firstPara;
+  paraSec.textContent = secondPara;
+  paraThird.textContent = thirdPara;
+  expandBtn.textContent = "open";
+
+  article.addEventListener("click", _=> {
+    article.classList.toggle("article-open");
+  });
+
+return article;
+
+}
