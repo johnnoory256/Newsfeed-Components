@@ -121,16 +121,13 @@ const data = [
   </div>
 
 */
-const articlesEl = document.querySelector(".articles");
+const articlesEl = document.querySelector(".articles")
 
-
-
-
-data.map((a) => {
-  return articlesEl.appendChild(createArticle(a.title, a.date, a.firstParagraph, a.secondParagraph, a.thirdParagraph));
+data.map((elem) => {
+  return articlesEl.appendChild(createArticle(elem.title, elem.date, elem.firstParagraph, elem.secondParagraph, elem.thirdParagraph));
 })
 
-function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+function createArticle(title, date, firstPara, secondPara , thirdPara) {
 const article = document.createElement("div");
 const articleTitle = document.createElement("h2");
 const articleDate = document.createElement("p");
@@ -154,24 +151,15 @@ const expandBtn = document.createElement("span");
 
   articleTitle.textContent = title;
   articleDate.textContent = date;
-  paraFirst.textContent = firstParagraph;
-  paraSec.textContent = secondParagraph;
-  paraThird.textContent = thirdParagraph;
+  paraFirst.textContent = firstPara;
+  paraSec.textContent = secondPara;
+  paraThird.textContent = thirdPara;
   expandBtn.textContent = "open";
 
   article.addEventListener("click", _=> {
     article.classList.toggle("article-open");
   });
 
-  // expandBtn.addEventListener('click', (e) => {
-  //   article.classList.toggle('article-open');
-  //   // article.classList.toggle('close');
-  //   // expandBtn.textContent.toggle('open');
-  // })
 return article;
+
 }
-
-
-
-  // buttonClose.classList.toggle('hide-btn');
-  // panelContent.classList.toggle('toggle-on');
